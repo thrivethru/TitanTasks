@@ -31,11 +31,33 @@
       <p>Task form...</p>
     </div>
     <!-- End Task Form -->
+    <hr>
     <!-- Task Card List -->
     <div class="container">
-      <h3>Review all your tasks here on this task list...</h3>
+      <h3>Tasks</h3>
+
       <!-- Task Card 1 -->
-      <p>This is an important task</p>
+      <div class="card">
+        <div class="card-header">
+          @Unassigned
+          <div class="float-right badge badge-success">Completed</div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Create wireframe</h5>
+          <p class="card-text">Create a card layout for wireframe to show how the task details submitted in the form above will look when displayed on a task card.</p>
+        </div>
+        
+        <div class="card-footer" >
+          <span>Due: 08/16/2021</span>
+          <div class="float-right">
+            <a href="#" class="btn btn-primary btn-sm">Complete</a> 
+            <a href="#" class="btn btn-secondary btn-sm">Edit</a>
+            <a href="#" class="btn btn-danger btn-sm">Delete</a>
+
+          </div>
+          
+        </div>
+      </div>
 
       <!-- Task Card 2 -->
       <p>This is also an important task</p>
