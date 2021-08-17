@@ -29,8 +29,47 @@
     <!-- Task Form -->
     <div class="container">
       <h3>Add a new task here on this task form...</h3>
-      <p>Task form...</p>
+      <form>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter task name">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Description</label>
+          <input type="textarea" class="form-control" rows=3 cols=50 id="description" placeholder="Enter task description">
+        </div>
+        <div class="container">
+            <div class="row row-cols-2">
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Due Date</label>
+                    <input type="date" class="form-control" id="duedate" placeholder="Select due date">
+                  </div>
+                  <div class="form-group">
+                    <label for="formGroupExampleInput2">Assigned to</label>
+                      <select class="form-control" id="Titan tasks" name="Titan tasks">
+                        <option value="Unassigned">Unassigned</option>
+                        <option value="Mark">Mark</option>
+                        <option value="Kassahun">Kassahun</option>
+                        <option value="Jeriah">Jeriah</option>
+                        <option value="Radha">Radha</option>
+                      </select>
+                   
+                  </div>
+          
+              
+            </div>
+          </div>
+    <!--
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Status</label>
+            <input type="text" class="form-control" id="status" placeholder="Select Status">
+          </div>
+        -->
+          
+          <a href="#" class="btn btn-primary">Add Task</a>
+      </form>
     </div>
+  
     <!-- End Task Form -->
     <hr>
     <!-- Task Card List -->
@@ -40,7 +79,7 @@
       <!-- Task Card 1 -->
       <div class="card">
         <div class="card-header">
-          @Unassigned
+          @Kassahun
           <div class="float-right badge badge-success rounded-pill">Completed</div>
         </div>
         <div class="card-body">
@@ -80,18 +119,78 @@
             <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</a>
 
           </div>
-          
+          <a href="#" class="btn btn-primary">Add Task</a>
         </div>
       </div>
 
       <!-- Task Card 3 -->
-      <p>This may be an important task</p>
+      <div class="card">
+        <div class="card-header">
+          @Radha
+          <div class="float-right badge bg-warning rounded-pill">In progress</div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Implement the card layout</h5>
+          <p class="card-text">Implement the card layout for the Titan Tasks using bootstrap.</p>
+        </div>
+        
+        <div class="card-footer" >
+          <span>Due: 10/08/2021</span>
+          <div class="float-right">
+            <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-check-lg"></i> Complete</a> 
+            <a href="#" class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i> Edit</a>
+            <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</a>
+
+          </div>
+          <a href="#" class="btn btn-primary">Add Task</a>
+        </div>
+      </div>
 
       <!-- Task Card 4 -->
-      <p>This too is an important task</p>
+      <div class="card">
+        <div class="card-header">
+          @Mark
+          <div class="float-right badge bg-warning rounded-pill">In progress</div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Implement the card layout</h5>
+          <p class="card-text">Implement the card layout for the Titan Tasks using bootstrap.</p>
+        </div>
+        
+        <div class="card-footer" >
+          <span>Due: 10/08/2021</span>
+          <div class="float-right">
+            <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-check-lg"></i> Complete</a> 
+            <a href="#" class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i> Edit</a>
+            <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</a>
+
+          </div>
+          <a href="#" class="btn btn-primary">Add Task</a>
+        </div>
+      </div>
 
       <!-- Task Card 5 -->
-      <p>This is definately an important task</p>
+      <div class="card">
+        <div class="card-header">
+          @Unassigned
+          <div class="float-right badge bg-warning rounded-pill">In progress</div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Implement the card layout</h5>
+          <p class="card-text">Implement the card layout for the Titan Tasks using bootstrap.</p>
+        </div>
+        
+        <div class="card-footer" >
+          <span>Due: 10/08/2021</span>
+          <div class="float-right">
+            <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-check-lg"></i> Complete</a> 
+            <a href="#" class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i> Edit</a>
+            <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</a>
+
+          </div>
+          <a href="#" class="btn btn-primary">Add Task</a>
+        </div>
+      </div>
     </div>
     <!-- End Task Card List -->
 
