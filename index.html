@@ -11,7 +11,8 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/styles.css">
     <title>TitanTask</title>
@@ -28,34 +29,37 @@
     <!-- Task Form -->
     <div class="container">
       <form>
-        <div class="form-group">
-          <label for="task-form-name">Name</label>
+        <label for="task-form-name">Name</label>
+        <div class="input-group">
           <input type="text" class="form-control" id="task-form-name" placeholder="Enter task name">
         </div>
         <div class="form-group">
           <label for="task-form-description">Description</label>
-          <input type="textarea" class="form-control" id="task-form-description" placeholder="Enter task description">
+          <textarea type="textarea" class="form-control" id="task-form-description" placeholder="Enter task description"></textarea>
         </div>
-        <div class="container">
-          <div class="row row-cols-2">
-            <div class="form-group">
-              <label for="task-form-duedate">Due Date</label>
-              <input type="date" class="form-control" id="task-form-duedate" placeholder="Select due date">
-            </div>
-            <div class="form-group">
-              <label for="task-form-assigned">Assigned to</label>
-                <select class="form-control" id="task-form-assigned" name="assigned">
-                  <option value="Unassigned">Unassigned</option>
-                  <option value="Mark">Mark</option>
-                  <option value="Kassahun">Kassahun</option>
-                  <option value="Jeriah">Jeriah</option>
-                  <option value="Radha">Radha</option>
-                </select>
+        <div class="row row-cols-2 mb-3">
+          <div class="form-group">
+            <label for="task-form-duedate">Due Date</label>
+            <input type="date" class="form-control" id="task-form-duedate" placeholder="Select due date">
+          </div>
+
+          <div class="form-group">
+            <label for="task-form-assigned">Assigned to</label>
+            <div class="input-group">
+              <span class="input-group-text">@</span>
+              <select class="form-select" id="task-form-assigned" name="assigned">
+                <option value="Unassigned">Unassigned</option>
+                <option value="Mark">Mark</option>
+                <option value="Kassahun">Kassahun</option>
+                <option value="Jeriah">Jeriah</option>
+                <option value="Radha">Radha</option>
+              </select>
             </div>
           </div>
         </div>
         <button href="#" class="btn btn-primary" type="submit"><i class="bi bi-plus-lg"></i> Add Task</button>
-        <a href="#" class="btn btn-secondary float-right"><i class="bi bi-eraser"></i> Clear</a>
+        <a href="#" class="btn btn-secondary float-end"><i class="bi bi-eraser"></i> Clear</a>
+        
       </form>
     </div>
     <!-- End Task Form -->
@@ -67,7 +71,7 @@
       <div class="card task-card">
         <div class="card-header">
           @Kassahun
-          <div class="float-right badge badge-success rounded-pill">Completed</div>
+          <div class="float-end badge bg-success rounded-pill">Completed</div>
         </div>
         <div class="card-body">
           <h5 class="card-title">Create wireframe</h5>
@@ -75,7 +79,7 @@
         </div>     
         <div class="card-footer" >
           <span>Due: 08/16/2021</span>
-          <div class="float-right">
+          <div class="float-end">
             <a href="#" class="btn btn-primary btn-sm d-none"><i class="bi bi-check-lg"></i> Complete</a>
             <a href="#" class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i> Edit</a>
             <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</a>
@@ -86,7 +90,7 @@
       <div class="card task-card">
         <div class="card-header">
           @Jsmooth
-          <div class="float-right badge bg-warning rounded-pill">In progress</div>
+          <div class="float-end badge bg-warning rounded-pill">In progress</div>
         </div>
         <div class="card-body">
           <h5 class="card-title">Implement the card layout</h5>
@@ -94,7 +98,7 @@
         </div>  
         <div class="card-footer" >
           <span>Due: 10/08/2021</span>
-          <div class="float-right">
+          <div class="float-end">
             <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-check-lg"></i> Complete</a> 
             <a href="#" class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i> Edit</a>
             <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</a>
@@ -105,7 +109,7 @@
       <div class="card task-card">
         <div class="card-header">
           @Radha
-          <div class="float-right badge bg-warning rounded-pill">In progress</div>
+          <div class="float-end badge bg-warning rounded-pill">In progress</div>
         </div>
         <div class="card-body">
           <h5 class="card-title">Implement the card layout</h5>
@@ -113,7 +117,7 @@
         </div>        
         <div class="card-footer" >
           <span>Due: 10/08/2021</span>
-          <div class="float-right">
+          <div class="float-end">
             <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-check-lg"></i> Complete</a> 
             <a href="#" class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i> Edit</a>
             <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</a>
@@ -124,7 +128,7 @@
       <div class="card task-card">
         <div class="card-header">
           @Mark
-          <div class="float-right badge bg-warning rounded-pill">In progress</div>
+          <div class="float-end badge bg-warning rounded-pill">In progress</div>
         </div>
         <div class="card-body">
           <h5 class="card-title">Implement the card layout</h5>
@@ -132,7 +136,7 @@
         </div>        
         <div class="card-footer" >
           <span>Due: 10/08/2021</span>
-          <div class="float-right">
+          <div class="float-end">
             <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-check-lg"></i> Complete</a> 
             <a href="#" class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i> Edit</a>
             <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</a>
@@ -143,7 +147,7 @@
       <div class="card task-card">
         <div class="card-header">
           @Unassigned
-          <div class="float-right badge bg-warning rounded-pill">In progress</div>
+          <div class="float-end badge bg-warning rounded-pill">In progress</div>
         </div>
         <div class="card-body">
           <h5 class="card-title">Implement the card layout</h5>
@@ -151,7 +155,7 @@
         </div>       
         <div class="card-footer" >
           <span>Due: 10/08/2021</span>
-          <div class="float-right">
+          <div class="float-end">
             <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-check-lg"></i> Complete</a> 
             <a href="#" class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i> Edit</a>
             <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</a>
@@ -161,6 +165,7 @@
     </div>
     <!-- End Task Card List -->
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
   </body>
 </html>
