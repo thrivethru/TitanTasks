@@ -1,19 +1,19 @@
 import {TaskManager} from "./taskManager.js";
 
 const taskManager = new TaskManager();
-console.log(taskManager.tasks);
 
-taskManager.addTask( 'Take out the trash',
- 'Take out the trash to the front of the house',
- 'Nick',
- '2020-09-20'
- )
- taskManager.addTask( 'Cook Dinner',
- 'Take out the trash to the front of the house',
- 'Nick',
- '2020-09-20'
- )
- console.log(taskManager.tasks);
+
+// let taskHtml = createTaskHtml(20, 'Take out the trash',
+//  'Take out the trash to the front of the house',
+//  'Nick', '2020-09-20', 'ToDo')
+// console.log(taskHtml);
+
+//  taskManager.addTask( 'Cook Dinner',
+//  'Take out the trash to the front of the house',
+//  'Nick',
+//  '2020-09-20'
+//  )
+//console.log(taskManager.tasks);
 const newTaskForm = document.querySelector("#task-form");
 
 function validFormFieldInput(data) {
@@ -41,7 +41,6 @@ function validFormFieldInput(data) {
     if (assigned.length < 1){
         console.log('Assigned is not valid');
         valid = false;
-
     }
 
     if (!dueDate){
@@ -50,20 +49,21 @@ function validFormFieldInput(data) {
     }
  
     if (valid) {
-        taskManager.addTask(name, description, assigned, dueDate);
-        console.log(taskManager.tasks);
+        const due = new Date(dueDate);
+        taskManager.addTask(name, description, assigned, due);
         newTaskForm.reset();
         newTaskForm.classList.remove('was-validated');
+        taskManager.render();
     } 
 }
-
+// task6
 newTaskForm.addEventListener('submit', (event) => {
     if (!newTaskForm.checkValidity()) {
         event.preventDefault()
         event.stopPropagation()
     }
     newTaskForm.classList.add('was-validated')
-    validFormFieldInput()
+    validFormFieldInput();
 }, false) 
 
 
