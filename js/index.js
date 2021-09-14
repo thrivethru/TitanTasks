@@ -1,69 +1,69 @@
-import {TaskManager} from "./taskManager.js";
+import { TaskManager } from "./taskManager.js";
 
 const taskManager = new TaskManager();
-
-
-// let taskHtml = createTaskHtml(20, 'Take out the trash',
-//  'Take out the trash to the front of the house',
-//  'Nick', '2020-09-20', 'ToDo')
-// console.log(taskHtml);
-
-//  taskManager.addTask( 'Cook Dinner',
-//  'Take out the trash to the front of the house',
-//  'Nick',
-//  '2020-09-20'
-//  )
-//console.log(taskManager.tasks);
 const newTaskForm = document.querySelector("#task-form");
+const newTaskFormClear = document.querySelector("#task-form-clear");
 
-function validFormFieldInput(data) {
-    let valid = true;
-    const newTaskNameInput = document.querySelector("#task-form-name");
-    const name = newTaskNameInput.value;
-    console.log("name: " + name);
+function validFormFieldInput(newTaskInput) {
+  let { name, assignedTo, dueDate } = newTaskInput;
+  let valid = true;
 
-    const newTaskDescriptionInput = document.querySelector("#task-form-description");
-    const description = newTaskDescriptionInput.value;
-    console.log("description: " + description);
+  if (name.length < 1) {
+    valid = false;
+  }
+  if (assignedTo.length < 1) {
+    valid = false;
+  }
+  if (!dueDate) {
+    valid = false;
+  }
 
-    const newTaskDueDateInput = document.querySelector("#task-form-duedate");
-    const dueDate = newTaskDueDateInput.value;
-    console.log("dueDate: " + dueDate);
-
-    const newTaskAssignedInput = document.querySelector("#task-form-assigned");
-    const assigned = newTaskAssignedInput.value;
-    console.log("Assigned: " + assigned);
-
-    if (name.length < 1){
-        console.log('name is not valid');
-        valid = false;
-    }
-    if (assigned.length < 1){
-        console.log('Assigned is not valid');
-        valid = false;
-    }
-
-    if (!dueDate){
-        console.log('Due Date is not valid');
-        valid = false;
-    }
- 
-    if (valid) {
-        const due = new Date(dueDate);
-        taskManager.addTask(name, description, assigned, due);
-        newTaskForm.reset();
-        newTaskForm.classList.remove('was-validated');
-        taskManager.render();
-    } 
+  return valid;
 }
-// task6
-newTaskForm.addEventListener('submit', (event) => {
-    if (!newTaskForm.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-    }
-    newTaskForm.classList.add('was-validated')
-    validFormFieldInput();
-}, false) 
 
+function processNewTask() {
+  const newTaskInput = {
+    name: document.querySelector("#task-form-name").value,
+    description: document.querySelector("#task-form-description").value,
+    dueDate: document.querySelector("#task-form-duedate").value,
+    assignedTo: document.querySelector("#task-form-assigned").value,
+  };
 
+  if (validFormFieldInput(newTaskInput)) {
+    const dueDate = new Date(newTaskInput.dueDate);
+    taskManager.addTask(
+      newTaskInput.name,
+      newTaskInput.description,
+      newTaskInput.assignedTo,
+      dueDate
+    );
+    taskManager.render();
+    resetTaskForm();
+  }
+}
+
+function resetTaskForm() {
+  newTaskForm.reset();
+  newTaskForm.classList.remove("was-validated");
+}
+
+newTaskForm.addEventListener(
+  "submit",
+  (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    newTaskForm.classList.add("was-validated");
+    processNewTask();
+  },
+  false
+);
+
+newTaskFormClear.addEventListener(
+  "click",
+  (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    resetTaskForm();
+  },
+  false
+);
