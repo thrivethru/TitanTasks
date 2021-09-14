@@ -3,6 +3,7 @@ import { TaskManager } from "./taskManager.js";
 const taskManager = new TaskManager();
 const newTaskForm = document.querySelector("#task-form");
 const newTaskFormClear = document.querySelector("#task-form-clear");
+const tasksList = document.querySelector("#task-list");
 
 function validFormFieldInput(newTaskInput) {
   let { name, assignedTo, dueDate } = newTaskInput;
@@ -64,6 +65,20 @@ newTaskFormClear.addEventListener(
     event.preventDefault();
     event.stopPropagation();
     resetTaskForm();
+  },
+  false
+);
+
+tasksList.addEventListener(
+  "click",
+  (event) => {
+    if (event.target.classList.contains("done-button")) {
+      const parentTask = event.target.parentNode.parentNode.parentNode;
+      const taskId = parseInt(parentTask.dataset.taskId); 
+      const task = taskManager.getTaskById(taskId);
+      task.status = "Done";
+      taskManager.render();
+    }
   },
   false
 );
