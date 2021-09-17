@@ -1,29 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
-    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="assets/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
     <!-- Bootstrap CSS -->
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
     <title>TitanTask</title>
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-          <img src="assets/favicon/favicon-32x32.png" width="32" height="32" class="d-inline-block align-top" alt="" loading="lazy">
-          TitanTask
-        </a>
+      <nav class="navbar fixed-top bg-dark navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img
+              src="assets/favicon/favicon-32x32.png"
+              width="32"
+              height="32"
+              class="d-inline-block align-text-top"
+              alt=""
+              loading="lazy"
+            />
+            TitanTask
+          </a>
+        </div>
       </nav>
     </header>
     <!-- Task Form -->
@@ -31,70 +66,127 @@
       <form id="task-form" novalidate>
         <label for="task-form-name">Name</label>
         <div class="input-group">
-          <input type="text" class="form-control" id="task-form-name" placeholder="Enter task name" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-          <div class="invalid-feedback">
-            Name not valid 
-          </div>
+          <input
+            type="text"
+            class="form-control"
+            id="task-form-name"
+            placeholder="Enter task name"
+            required
+          />
+          <!-- <div class="valid-feedback">Looks good!</div> -->
+          <div class="invalid-feedback">Name not valid</div>
         </div>
         <div class="form-group">
           <label for="task-form-description">Description</label>
-          <textarea type="textarea" class="form-control" id="task-form-description" placeholder="Enter task description"></textarea>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-          <div class="invalid-feedback">
-            Description not valid 
-          </div>
+          <textarea
+            type="textarea"
+            class="form-control"
+            id="task-form-description"
+            placeholder="Enter task description"
+          ></textarea>
+          <!-- <div class="valid-feedback">Looks good!</div> -->
+          <div class="invalid-feedback">Description not valid</div>
         </div>
         <div class="row row-cols-2 mb-3">
           <div class="form-group">
             <label for="task-form-duedate">Due Date</label>
-            <input type="date" class="form-control" id="task-form-duedate" placeholder="Select due date" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Due Date not valid 
-            </div>
+            <input
+              type="date"
+              class="form-control"
+              id="task-form-duedate"
+              placeholder="Select due date"
+              required
+            />
+            <!-- <div class="valid-feedback">Looks good!</div> -->
+            <div class="invalid-feedback">Due Date not valid</div>
           </div>
-
           <div class="form-group">
             <label for="task-form-assigned">Assigned to</label>
             <div class="input-group">
               <span class="input-group-text">@</span>
-              <select class="form-select" id="task-form-assigned" name="assigned" required>
+              <select
+                class="form-select"
+                id="task-form-assigned"
+                name="assigned"
+                required
+              >
                 <option value="Unassigned">Unassigned</option>
                 <option value="Mark">Mark</option>
                 <option value="Kassahun">Kassahun</option>
                 <option value="Jeriah">Jeriah</option>
                 <option value="Radha">Radha</option>
               </select>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
-              <div class="invalid-feedback">
-                Assignment not valid 
-              </div>
+              <!-- <div class="valid-feedback">Looks good!</div> -->
+              <div class="invalid-feedback">Assignment not valid</div>
             </div>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit"><i class="bi bi-plus-lg"></i> Add Task</button>
-        <button id="task-form-clear" class="btn btn-secondary float-end" type="button"><i class="bi bi-eraser"></i> Clear</button>
-        
+        <button class="btn btn-primary" type="submit">
+          <i class="bi bi-plus-lg"></i> Add Task
+        </button>
+        <button
+          id="task-form-clear"
+          class="btn btn-secondary float-end"
+          type="button"
+        >
+          <i class="bi bi-eraser"></i> Clear
+        </button>
       </form>
     </div>
     <!-- End Task Form -->
-    <hr>
-    <!-- Task Card List -->
-    <div id="task-list" class="container">
+    <hr />
+    <div class="container">
+      <div
+        id="task-list-radio-group"
+        class="btn-group mb-3"
+        role="group"
+        aria-label="Basic radio toggle button group"
+      >
+        <input
+          type="radio"
+          class="btn-check"
+          name="task-list-radio"
+          id="task-list-radio-all"
+          value="all"
+          autocomplete="off"
+        />
+        <label class="btn btn-outline-primary" for="task-list-radio-all"
+          >All</label
+        >
+        <input
+          type="radio"
+          class="btn-check"
+          name="task-list-radio"
+          id="task-list-radio-todo"
+          value="todo"
+          autocomplete="off"
+        />
+        <label class="btn btn-outline-primary" for="task-list-radio-todo"
+          >ToDo</label
+        >
+        <input
+          type="radio"
+          class="btn-check"
+          name="task-list-radio"
+          id="task-list-radio-done"
+          value="done"
+          autocomplete="off"
+        />
+        <label class="btn btn-outline-primary" for="task-list-radio-done"
+          >Done</label
+        >
+      </div>
+      <!-- Task Card List -->
+      <div id="task-list"></div>
+      <!-- End Task Card List -->
     </div>
-    <!-- End Task Card List -->
     <!-- Bootstrap JS -->
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="js/index.js"></script>
   </body>
 </html>

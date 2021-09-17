@@ -1,5 +1,54 @@
-.task-card {
-    margin-bottom: 20px;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-    min-width: 425px;
+body {
+  padding-top: 70px;
+  /* background-color: lightslategrey; */
 }
+
+.task-card {
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+  min-width: 425px;
+  max-width: 600px;
+}
+
+.task-card-date {
+  width: 110px !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.2;
+  background-image: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23212529' viewBox='0 0 16 16'><path d='M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z'/><path d='M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z'/></svg>");
+  height: 16px;
+  width: 16px;
+  margin-left: 0;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  background-image: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23212529' viewBox='0 0 16 16'><path d='M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z'/><path d='M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z'/></svg>");
+  opacity: 1;
+  height: 16px;
+  position: relative;
+  width: 16px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:before {
+  /* background-image: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23212529' viewBox='0 0 16 16'><path d='M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z'/><path d='M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z'/></svg>"); */
+  /* background: #eee; */
+  /* background: linear-gradient(90deg, #eee, #fff); */
+  /* box-shadow: 0 1px 1px rgba(0,0,0,0.1); */
+  /* border-radius: 24px; */
+  /* content: ''; */
+  /* display: block; */
+  /* height: 16px; */
+  /* left: -2px; */
+  /* position: absolute; */
+  /* top: -5px; */
+  /* width: 8px; */
+  /* z-index: -1; */
+  /* background: none; */
+}
+
+/*
+input[type=date]:focus {
+	border-color: #3399ff;
+}
+*/
