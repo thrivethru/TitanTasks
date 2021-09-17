@@ -1,0 +1,19 @@
+{
+  "name": "titan-tasks",
+  "version": "0.1.0",
+  "description": "The best task planner from the Titans.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thrivethru/TitanTasks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thrivethru/TitanTasks/issues"
+  },
+  "homepage": "https://github.com/thrivethru/TitanTasks#readme"
+}
