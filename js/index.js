@@ -1,4 +1,4 @@
-import { TaskManager } from "./task.service.js";
+import { TaskManager } from "./core/task.service.js";
 import { TaskForm } from "./task-form/task-form.component.js";
 import { TasksList } from "./tasks-list/tasks-list.component.js";
 

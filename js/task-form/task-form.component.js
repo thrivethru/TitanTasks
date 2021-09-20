@@ -1,4 +1,4 @@
-import { validateDateInput } from "../utils.js";
+import { validateDateInput } from "../shared/utils.js";
 
 const newTaskFormView = `
 <form id="task-form" class="new-task-form" novalidate>
@@ -110,7 +110,7 @@ export class TaskForm {
   }
 
   validFormFieldInput(newTaskInput) {
-    let { name, assignedTo, dueDate } = newTaskInput;
+    const { name, assignedTo, dueDate } = newTaskInput;
     let valid = true;
     if (name.length < 1) {
       valid = false;
@@ -137,14 +137,8 @@ export class TaskForm {
     };
 
     if (this.validFormFieldInput(newTaskInput)) {
-      const dueDate = new Date(newTaskInput.dueDate);
-      dueDate.setTime(dueDate.getTime() + dueDate.getTimezoneOffset() * 60000);
-      this.taskManager.addTask(
-        newTaskInput.name,
-        newTaskInput.description,
-        newTaskInput.assignedTo,
-        dueDate
-      );
+      const { name, description, assignedTo, dueDate } = newTaskInput;
+      this.taskManager.addTask(name, description, assignedTo, dueDate);
       this.tasksList.render();
       this.taskManager.save();
       this.resetTaskForm();
