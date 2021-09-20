@@ -6,7 +6,7 @@ export class TaskManager {
   }
 
   getTasks() {
-    return this.tasks;
+    return [...this.tasks];
   }
 
   getTodoTasks() {
@@ -27,12 +27,16 @@ export class TaskManager {
 
   addTask(name, description, assignedTo, dueDate) {
     this.currentId++;
+    const newDueDate = new Date(dueDate);
+    newDueDate.setTime(
+      newDueDate.getTime() + newDueDate.getTimezoneOffset() * 60000
+    );
     let newTask = {
       id: this.currentId,
       name,
       description,
       assignedTo,
-      dueDate,
+      dueDate: newDueDate,
       status: "ToDo",
     };
     this.tasks = [...this.tasks, newTask];

@@ -4,7 +4,8 @@
   "description": "The best task planner from the Titans.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --recursive \"./**/*.spec.js\"",
+    "test-watch": "mocha --recursive \"./**/*.spec.js\" --parallel --watch"
   },
   "repository": {
     "type": "git",
