@@ -1,28 +1,42 @@
+import { addRelativeDates } from "../shared/utils.js";
+
 export class TaskManager {
-  constructor(currentId = 0) {
+  constructor(currentId = 0, storage = window.localStorage) {
     this.tasks = [];
     this.currentId = currentId;
+    this.storage = storage;
     this.filter = "all";
+    this.dateFilter = "any";
   }
 
   getTasks() {
-    return [...this.tasks];
+    return addRelativeDates([...this.tasks], "dueDate");
   }
 
   getTodoTasks() {
-    return this.tasks.filter((task) => task.status === "ToDo");
+    return this.getTasks().filter((task) => task.status === "ToDo");
   }
 
   getDoneTasks() {
-    return this.tasks.filter((task) => task.status === "Done");
+    return this.getTasks().filter((task) => task.status === "Done");
   }
 
   setFilter(filter) {
     this.filter = filter;
+    this.save();
   }
 
   getFilter() {
     return this.filter;
+  }
+
+  setDateFilter(dateFilter) {
+    this.dateFilter = dateFilter;
+    this.save();
+  }
+
+  getDateFilter() {
+    return this.dateFilter;
   }
 
   addTask(name, description, assignedTo, dueDate) {
@@ -41,6 +55,7 @@ export class TaskManager {
     };
     this.tasks = [...this.tasks, newTask];
     this.tasks.sort((a, b) => a.dueDate - b.dueDate);
+    this.save();
   }
 
   setStatus(taskId) {
@@ -48,6 +63,7 @@ export class TaskManager {
       if (taskId !== task.id) return task;
       return { ...task, status: task.status === "ToDo" ? "Done" : "ToDo" };
     });
+    this.save();
   }
 
   setDate(taskId, newDueDate) {
@@ -56,6 +72,7 @@ export class TaskManager {
       return { ...task, dueDate: newDueDate };
     });
     this.tasks.sort((a, b) => a.dueDate - b.dueDate);
+    this.save();
   }
 
   setAssignedTo(taskId, newAssignedTo) {
@@ -63,35 +80,46 @@ export class TaskManager {
       if (taskId !== task.id) return task;
       return { ...task, assignedTo: newAssignedTo };
     });
+    this.save();
   }
 
   load() {
-    let tasks = localStorage.getItem("tasks");
+    let tasks = this.storage.getItem("tasks");
     if (tasks && tasks.length > 0) {
       tasks = JSON.parse(tasks);
       this.tasks = tasks.map((task) => {
         return { ...task, dueDate: new Date(task.dueDate) };
       });
     }
-    let currentId = localStorage.getItem("currentId");
+    const currentId = this.storage.getItem("currentId");
     if (currentId) {
       this.currentId = parseInt(currentId);
     }
-    let filter = localStorage.getItem("filter");
-    if (filter) {
-      this.filter = filter;
-    }
+    const filter = this.storage.getItem("filter");
+    this.filter = ["todo", "done"].includes(filter) ? filter : "all";
+    const dateFilter = this.storage.getItem("dateFilter");
+    this.dateFilter = [
+      "any",
+      "past",
+      "today",
+      "tomorrow",
+      "next-seven-days",
+    ].includes(dateFilter)
+      ? dateFilter
+      : "any";
   }
 
   save() {
-    let tasksJson = JSON.stringify(this.tasks);
-    localStorage.setItem("tasks", tasksJson);
-    let currentId = this.currentId.toString();
-    localStorage.setItem("currentId", currentId);
-    localStorage.setItem("filter", this.filter);
+    const tasksJson = JSON.stringify(this.tasks);
+    this.storage.setItem("tasks", tasksJson);
+    const currentId = this.currentId.toString();
+    this.storage.setItem("currentId", currentId);
+    if (this.filter) this.storage.setItem("filter", this.filter);
+    if (this.dateFilter) this.storage.setItem("dateFilter", this.dateFilter);
   }
 
   delete(taskId) {
     this.tasks = this.tasks.filter((task) => task.id !== taskId);
+    this.save();
   }
 }
