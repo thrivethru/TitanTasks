@@ -98,8 +98,8 @@ export class TaskListFilter {
       "#task-list-filter-status"
     );
     this.taskListFilterDate = document.querySelector("#task-list-filter-date");
-    this.filter = this.taskManager.getFilter();
-    this.dateFilter = this.taskManager.getDateFilter();
+    this.filter = this.taskManager.getFilter() || "all";
+    this.dateFilter = this.taskManager.getDateFilter() || "any";
   }
 
   init() {
@@ -133,7 +133,7 @@ export class TaskListFilter {
         const checked = event.target.value;
         if (checked !== this.dateFilter) {
           this.taskManager.setDateFilter(checked);
-          this.filter = checked;
+          this.dateFilter = checked;
           this.taskList.render();
         }
       },
