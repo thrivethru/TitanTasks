@@ -4,14 +4,18 @@ body {
 }
 
 .new-task-form {
-  min-width: 425px;
+  min-width: 475px;
   max-width: 600px;
+}
+
+#task-list-filter {
+  min-width: 475px;
 }
 
 .task-card {
   margin-bottom: 20px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-  min-width: 425px;
+  min-width: 475px;
   max-width: 600px;
 }
 

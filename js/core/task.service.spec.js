@@ -8,10 +8,19 @@ const mockNewTask = {
   dueDate: "2021-09-21",
 };
 
+var mockStorage = {
+  setItem: function () {},
+  removeItem: function () {},
+  key: function () {},
+  getItem: function () {},
+  removeItem: function () {},
+  length: 0,
+};
+
 describe("TaskManager", function () {
   describe("Constructor", function () {
     before(function () {
-      this.taskManager = new TaskManager();
+      this.taskManager = new TaskManager(0, mockStorage);
     });
 
     after(function () {
@@ -22,18 +31,14 @@ describe("TaskManager", function () {
       expect(this.taskManager).to.exist;
     });
 
-    it("should have tasks of type array", function () {
-      expect(this.taskManager.getTasks()).to.be.a("array");
-    });
-
-    it("should have empty tasks", function () {
-      expect(this.taskManager.getTasks()).to.be.empty;
+    it("should have tasks of type array that is empty", function () {
+      expect(this.taskManager.getTasks()).to.be.an("array").that.is.empty;
     });
   });
 
   describe("addTask()", function () {
     beforeEach(function () {
-      this.taskManager = new TaskManager();
+      this.taskManager = new TaskManager(0, mockStorage);
     });
 
     afterEach(function () {
@@ -55,20 +60,8 @@ describe("TaskManager", function () {
         "description",
         "assignedTo",
         "dueDate",
-        "status"
-      );
-    });
-
-    it("should have all keys", function () {
-      const { name, description, assignedTo, dueDate } = mockNewTask;
-      this.taskManager.addTask(name, description, assignedTo, dueDate);
-      expect(this.taskManager.getTasks()[0]).to.have.all.keys(
-        "id",
-        "name",
-        "description",
-        "assignedTo",
-        "dueDate",
-        "status"
+        "status",
+        "relativeDates"
       );
     });
 
@@ -130,7 +123,7 @@ describe("TaskManager", function () {
 
   describe("delete()", function () {
     beforeEach(function () {
-      this.taskManager = new TaskManager();
+      this.taskManager = new TaskManager(0, mockStorage);
     });
 
     afterEach(function () {
