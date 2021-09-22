@@ -1,14 +1,16 @@
 import { validateDateInput, sanitizeHTML } from "../shared/utils.js";
+
 export const createTaskView = (
   id,
   name,
   description,
   assignedTo,
   dueDate,
-  status
+  status,
+  relativeDates
 ) => {
   const html = `
-  <div data-task-id="${id}" class="card task-card">
+  <div data-task-id="${id}" class="card task-card ${relativeDates.join(" ")}">
         <div class="card-header">
           <div class="row align-items-center">
             <div class="col-auto">
@@ -24,9 +26,20 @@ export const createTaskView = (
                 </select>
               </div>
             </div>
+            <div class="col">${
+              status === "Done"
+                ? ""
+                : relativeDates.includes("past")
+                ? "<div class='badge bg-danger'>Past Due</div>"
+                : relativeDates.includes("today")
+                ? "<div class='badge bg-warning text-dark'>Today</div>"
+                : relativeDates.includes("tomorrow")
+                ? "<div class='badge bg-info'>Tomorrow</div>"
+                : ""
+            }</div>
             <div class="col me-auto">
               <button class="done-button float-end badge ${
-                status === "Done" ? "btn-success" : "btn-warning text-dark"
+                status === "Done" ? "btn-success" : "btn-primary"
               } rounded-pill" data-bs-toggle="tooltip" title="${
     status === "Done" ? "Mark as ToDo" : "Mark as Done"
   }">${status}</button>
@@ -57,17 +70,16 @@ export const createTaskView = (
 };
 
 export class TaskCard {
-  constructor(taskManager, tasksList) {
+  constructor(taskManager, taskList) {
     this.taskManager = taskManager;
-    this.tasksList = tasksList;
+    this.taskList = taskList;
   }
 
   updateStatus(event) {
     const parentTask = event.target.parentNode.parentNode.parentNode.parentNode;
     const taskId = parseInt(parentTask.dataset.taskId);
     this.taskManager.setStatus(taskId);
-    this.tasksList.render();
-    this.taskManager.save();
+    this.taskList.render();
   }
 
   updateDate(event) {
@@ -81,11 +93,10 @@ export class TaskCard {
         newDueDate.getTime() + newDueDate.getTimezoneOffset() * 60000
       );
       this.taskManager.setDate(taskId, newDueDate);
-      this.taskManager.save();
     } else {
       // TODO show validation
     }
-    this.tasksList.render();
+    this.taskList.render();
   }
 
   updateAssignedTo(event) {
@@ -94,8 +105,7 @@ export class TaskCard {
       event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
     const taskId = parseInt(parentTask.dataset.taskId);
     this.taskManager.setAssignedTo(taskId, inputAssingedTo);
-    this.tasksList.render();
-    this.taskManager.save();
+    this.taskList.render();
   }
 
   deleteTask(event) {
@@ -105,7 +115,6 @@ export class TaskCard {
     }
     const taskId = parseInt(parentTask.dataset.taskId);
     this.taskManager.delete(taskId);
-    this.tasksList.render();
-    this.taskManager.save();
+    this.taskList.render();
   }
 }

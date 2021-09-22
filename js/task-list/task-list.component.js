@@ -1,19 +1,19 @@
 import { createTaskView, TaskCard } from "./task-card.component.js";
-import { TasksListFilter } from "./tasks-list-filter.component.js";
+import { TaskListFilter } from "./task-list-filter.component.js";
 
-export class TasksList {
+export class TaskList {
   constructor(taskManager) {
     this.taskManager = taskManager;
-    this.tasksList = document.querySelector("#tasks-list");
+    this.taskList = document.querySelector("#task-list");
     this.taskCard;
   }
 
   init() {
-    const tasksListFilter = new TasksListFilter(this.taskManager, this);
-    tasksListFilter.init();
+    const taskListFilter = new TaskListFilter(this.taskManager, this);
+    taskListFilter.init();
     this.taskCard = new TaskCard(this.taskManager, this);
 
-    this.tasksList.addEventListener(
+    this.taskList.addEventListener(
       "click",
       (event) => {
         if (event.target.classList.contains("done-button")) {
@@ -26,7 +26,7 @@ export class TasksList {
       false
     );
 
-    this.tasksList.addEventListener(
+    this.taskList.addEventListener(
       "change",
       (event) => {
         if (event.target.classList.contains("task-card-date")) {
@@ -38,12 +38,15 @@ export class TasksList {
       },
       false
     );
+
+    const reRender = setInterval(() => this.render(), 60000);
   }
 
-  render() {
-    const filter = this.taskManager.getFilter();
+  getFilteredTasks() {
+    const statusFilter = this.taskManager.getFilter();
+    const dateFilter = this.taskManager.getDateFilter();
     let filteredTasks;
-    switch (filter) {
+    switch (statusFilter) {
       case "todo":
         filteredTasks = this.taskManager.getTodoTasks();
         break;
@@ -53,6 +56,17 @@ export class TasksList {
       default:
         filteredTasks = this.taskManager.getTasks();
     }
+    filteredTasks =
+      dateFilter === "any"
+        ? filteredTasks
+        : filteredTasks.filter((task) =>
+            task.relativeDates.includes(dateFilter)
+          );
+    return filteredTasks;
+  }
+
+  render() {
+    let filteredTasks = this.getFilteredTasks();
     let tasksHtmlList = [];
     filteredTasks.forEach((task) => {
       const inputDueDate = `${task.dueDate.getFullYear()}-${(
@@ -69,11 +83,12 @@ export class TasksList {
         task.description,
         task.assignedTo,
         inputDueDate,
-        task.status
+        task.status,
+        task.relativeDates
       );
       tasksHtmlList = [...tasksHtmlList, taskHtml];
     });
     const tasksHtml = tasksHtmlList.join("\n");
-    this.tasksList.innerHTML = tasksHtml;
+    this.taskList.innerHTML = tasksHtml;
   }
 }

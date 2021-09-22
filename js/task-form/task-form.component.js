@@ -51,7 +51,7 @@ const newTaskFormView = `
           <option value="Unassigned">Unassigned</option>
           <option value="Mark">Mark</option>
           <option value="Kassahun">Kassahun</option>
-          <option value="Jeriah">Jeriah</option>
+          <option value="Jsmooth">Jsmooth</option>
           <option value="Radha">Radha</option>
         </select>
         <!-- <div class="valid-feedback">Looks good!</div> -->
@@ -140,7 +140,6 @@ export class TaskForm {
       const { name, description, assignedTo, dueDate } = newTaskInput;
       this.taskManager.addTask(name, description, assignedTo, dueDate);
       this.tasksList.render();
-      this.taskManager.save();
       this.resetTaskForm();
     }
   }
